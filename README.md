@@ -2,7 +2,7 @@
 
 This is the final project for the [DD2424 - Deep Learning in Data Science](https://www.kth.se/student/kurser/kurs/DD2424?l=en) course of KTH Royal Institute of Technology.
 
-Supervisor: [Josephine Sullivan, KTH Royal Institute of Technology](https://www.csc.kth.se/~sullivan/)
+Supervisor: [Josephine Sullivan](https://www.csc.kth.se/~sullivan/), KTH Royal Institute of Technology
 
 ## Task
 Explore and compare different deep learning models for image colorization, three representative methods we choosed are U-Net, DCGAN and NoGAN.
@@ -32,11 +32,15 @@ To train the model, we need both gray images (input data) and corresponding colo
 #### DCGAN
 The basic task for our GAN is to add three channels (RGB) with relevant intensities of each color channel. Hence, to address this problem, we use a special flavor of GAN called Conditional DCGAN which accepts gray scale images (with one intensity channel) as input. The discriminator input is also changed to be compatible with the conditional DCGAN. Our final cost functions are as follows then:
 
+<div align=center>
+<img src=https://github.com/MUYang99/Tensorflow_Image-Colorization-with-Deep-Learning/blob/main/img/formula.png/>
+</div>
 
 #### NoGAN
-
+Basic steps for NoGAN are as follows: First train the generator in a conventional way by itself with just the feature loss. Next, generate images from that, and train the critic for distinguishing between those outputs and real images as a basic binary classifier. Finally, train the generator and critic together in a GAN setting.
 
 ### Results
 
 The predictions of U-Net, DCGAN and NoGAN and the ground truth of random selected samples are visualized in a figure to compare.
+
 
