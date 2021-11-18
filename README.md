@@ -42,5 +42,10 @@ Basic steps for NoGAN are as follows: First train the generator in a conventiona
 ### Results
 
 The predictions of U-Net, DCGAN and NoGAN and the ground truth of random selected samples are visualized in a figure to compare.
-
+<div align=center>
+<img src=https://github.com/MUYang99/Tensorflow_Image-Colorization-with-Deep-Learning/blob/main/img/r1.png/>
+</div>
+<div align=center>
+<img src=https://github.com/MUYang99/Tensorflow_Image-Colorization-with-Deep-Learning/blob/main/img/r2.png/>
+</div>
 
