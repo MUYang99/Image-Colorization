@@ -18,11 +18,19 @@ In our project, two train-validation data subsets from CIFAR-10 are tested. The 
 ### Models Construction & Training
 
 #### U-Net
-In order to divide data evenly by the hue, first we calculate the hue value of each colorful image, after removing 581 gray-scale images, we sorted the images according to the hue value. Then we take 10% of the sorted set for validation, and the rest for training, both with similar color distributions.
 
-To train the model, we need both gray images (input data) and corresponding colorful im- ages(ground truth). Then we converted the colorful images to the L a b color space. Gray images only contains the L value and the corresponding colorful image has L, a and b values. The goal is that our model can use L value to predict both a and b values then get reasonable results. Therefore, we trained the model with Adam’s optimizer and minimize MSE between the predicted and ground truth averaged over all pixels.
+U-Net is a fully convolutional network model. The contractive path consists of 4 × 4 convolution layers with stride 2 for down-sampling, each followed by batch normalization and Leaky-ReLU activation function with the slope of 0.2. The number of channels is doubled after each step. Each unit in the expansive path consists of a 4 × 4 transposed convolutional layer with stride 2 for up-sampling, concatenation with the activation map of the mirroring layer in the contracting path, followed by batch normalization and ReLU activation function. The last layer of the network is a 1 × 1 convolution which is equivalent to cross-channel parametric pooling layer. We use the tanh function for the last layer.
+
+<div align=center>
+<img src=https://github.com/MUYang99/Tensorflow_Image-Colorization-with-Deep-Learning/blob/main/img/U-NET.png/>
+</div>
+
+In order to divide data evenly by the hue, first we calculate the hue value of each colorful image, after removing 581 gray-scale images, we sorted the images according to the hue value. Then we take 10% of the sorted set for validation, and the rest for training, both with similar color distributions.
+ 
+To train the model, we need both gray images (input data) and corresponding colorful images(ground truth). Then we converted the colorful images to the L a b color space. Gray images only contains the L value and the corresponding colorful image has L, a and b values. The goal is that our model can use L value to predict both a and b values then get reasonable results. Therefore, we trained the model with Adam’s optimizer and minimize MSE between the predicted and ground truth averaged over all pixels.
 
 #### DCGAN
+The basic task for our GAN is to add three channels (RGB) with relevant intensities of each color channel. Hence, to address this problem, we use a special flavor of GAN called Conditional DCGAN which accepts gray scale images (with one intensity channel) as input. The discriminator input is also changed to be compatible with the conditional DCGAN. Our final cost functions are as follows then:
 
 
 #### NoGAN
