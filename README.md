@@ -5,7 +5,7 @@ This is the final project for the [DD2424 - Deep Learning in Data Science](https
 Supervisor: [Josephine Sullivan](https://www.csc.kth.se/~sullivan/), KTH Royal Institute of Technology
 
 ## Task
-Explore and compare different deep learning models for image colorization, three representative methods we choosed are U-Net, DCGAN and NoGAN.
+This project aims to explore and compare three different deep learning models U-Net, DCGAN and NoGAN for image colorization.
 
 ## Methodology & Procedure
 
